@@ -58,7 +58,7 @@ public class Problem100 {
             }
 
             // Each subsequent line from the input corresponds to a newline in the output
-            if (!stringBuilder.toString().equals("")) {
+            if (!stringBuilder.toString().isEmpty()) {
                 stringBuilder.append("\n");
             }
 
@@ -70,12 +70,14 @@ public class Problem100 {
                 if (start == -1) {
                     start = parseIntegerInRange(element);
 
-                } else if (end == -1) {
+                }
+                else if (end == -1) {
                     // Second element should be prefixed with a space
                     stringBuilder.append(" ");
                     end = parseIntegerInRange(element);
 
-                } else {
+                }
+                else {
                     throw new InvalidArgumentNumber(INVALID_ARGUMENT_NUMBER);
                 }
 
