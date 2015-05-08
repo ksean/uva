@@ -1,26 +1,51 @@
 package com.kennedysean.uva.volume1;
 
+import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.PrintStream;
+
+import org.apache.commons.io.IOUtils;
 
 public class Problem101Test {
 
-    @Test
-    public void acceptInitialSize() {
+    private static final String BASE_PATH = "volume1/problem101/";
+    ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+    ByteArrayOutputStream output = new ByteArrayOutputStream();;
 
+    @Before
+    public void setup() {
+        System.setOut(new PrintStream(output));
     }
 
     @Test
-    public void acceptMoveOrPileCommand() {
+    public void quittingWithoutCommandsPrintsBlocks() throws IOException {
+        Problem101.parseInputStream(classLoader.getResourceAsStream(BASE_PATH + "quickQuitInput"));
 
+        Assert.assertEquals(
+                IOUtils.toString(
+                        classLoader.getResourceAsStream(
+                                BASE_PATH + "quickQuitOutput"
+                        ),
+                        "UTF-8"
+                ),
+                output.toString()
+        );
     }
 
     @Test
-    public void acceptOverOrOntoAction() {
+    public void sampleInputMatchesSampleOutput() throws IOException {
+        Problem101.parseInputStream(classLoader.getResourceAsStream(BASE_PATH + "sampleInput"));
 
-    }
-
-    @Test
-    public void terminatesUponQuitCommand() {
-
+        Assert.assertEquals(
+                IOUtils.toString(
+                        classLoader.getResourceAsStream(BASE_PATH + "sampleOutput"),
+                        "UTF-8"
+                ),
+                output.toString()
+        );
     }
 }

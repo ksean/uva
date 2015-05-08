@@ -1,6 +1,5 @@
 package com.kennedysean.uva.volume1;
 
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,17 +14,11 @@ public class Problem100Test {
 
     private static final String BASE_PATH = "volume1/problem100/";
     ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-    ByteArrayOutputStream output;
+    ByteArrayOutputStream output = new ByteArrayOutputStream();;
 
     @Before
     public void setup() {
-        output = new ByteArrayOutputStream();
         System.setOut(new PrintStream(output));
-    }
-
-    @After
-    public void cleanup() throws IOException {
-        System.out.flush();
     }
 
     @Test
@@ -46,6 +39,12 @@ public class Problem100Test {
     public void sampleInputReturnsSampleOutput() throws IOException {
         Problem100.parseInputStream(classLoader.getResourceAsStream(BASE_PATH + "sampleInput"));
 
-        Assert.assertEquals(IOUtils.toString(classLoader.getResourceAsStream(BASE_PATH + "sampleOutput"), "UTF-8"), output.toString());
+        Assert.assertEquals(
+                IOUtils.toString(
+                        classLoader.getResourceAsStream(BASE_PATH + "sampleOutput"),
+                        "UTF-8"
+                ),
+                output.toString()
+        );
     }
 }

@@ -1,7 +1,6 @@
 package com.kennedysean.uva.volume1;
 
 import com.google.common.base.Splitter;
-import com.kennedysean.uva.Problem;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -14,7 +13,7 @@ import java.util.List;
  * The 3n + 1 problem
  * http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=3&page=show_problem&problem=36
  */
-public class Problem100 extends Problem {
+public class Problem100 {
 
     private static Splitter splitter = Splitter.on(' ').omitEmptyStrings().trimResults();
     private static StringBuilder outputBuilder;
