@@ -1,82 +1,51 @@
 package com.kennedysean.uva.volume1;
 
+import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.PrintStream;
+
+import org.apache.commons.io.IOUtils;
 
 public class Problem100Test {
 
-    Problem100 problem100 = new Problem100();
+    private static final String BASE_PATH = "volume1/problem100/";
+    ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+    ByteArrayOutputStream output;
 
-    @Test (expected = Problem100.InvalidArgumentTypes.class)
-    public void rejectCharactersInInput() throws Problem100.InvalidArgumentNumber, Problem100.InvalidArgumentTypes,
-            Problem100.InvalidArgumentRange, IOException {
-
-        problem100.getOutput("1 a");
+    @Before
+    public void setup() {
+        output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
     }
 
-    @Test (expected = Problem100.InvalidArgumentTypes.class)
-    public void rejectFloatInInput() throws Problem100.InvalidArgumentNumber, Problem100.InvalidArgumentTypes,
-            Problem100.InvalidArgumentRange, IOException {
-
-        problem100.getOutput("1.0 1");
-    }
-
-    @Test (expected = Problem100.InvalidArgumentNumber.class)
-    public void rejectTooFewArguments() throws Problem100.InvalidArgumentNumber, Problem100.InvalidArgumentTypes,
-            Problem100.InvalidArgumentRange, IOException {
-
-        problem100.getOutput("1");
-    }
-
-    @Test (expected = Problem100.InvalidArgumentNumber.class)
-    public void rejectTooManyArguments() throws Problem100.InvalidArgumentNumber, Problem100.InvalidArgumentTypes,
-            Problem100.InvalidArgumentRange, IOException {
-
-        problem100.getOutput("1 1 1");
-    }
-
-    @Test (expected = Problem100.InvalidArgumentRange.class)
-    public void rejectArgumentOutOfRange() throws Problem100.InvalidArgumentNumber, Problem100.InvalidArgumentTypes,
-            Problem100.InvalidArgumentRange, IOException {
-
-        problem100.getOutput("0 1");
+    @After
+    public void cleanup() throws IOException {
+        System.out.flush();
     }
 
     @Test
-    public void acceptSingleLine() throws Problem100.InvalidArgumentNumber, Problem100.InvalidArgumentTypes,
-            Problem100.InvalidArgumentRange, IOException {
+    public void acceptSingleLine() throws IOException {
+        Problem100.parseInputStream(classLoader.getResourceAsStream(BASE_PATH + "singleLine"));
 
-        String output = problem100.getOutput("1 10");
-
-        Assert.assertEquals("1 10 20", output);
+        Assert.assertEquals("1 10 20", output.toString());
     }
 
     @Test
-    public void acceptMultipleSpacesBetweenArguments() throws Problem100.InvalidArgumentNumber, Problem100.InvalidArgumentTypes,
-            Problem100.InvalidArgumentRange, IOException {
+    public void acceptMultipleSpacesBetweenArguments() throws IOException {
+        Problem100.parseInputStream(classLoader.getResourceAsStream(BASE_PATH + "singleLineManySpaces"));
 
-        String output = problem100.getOutput("1     10");
-
-        Assert.assertEquals("1 10 20", output);
+        Assert.assertEquals("1 10 20", output.toString());
     }
 
     @Test
-    public void acceptMultipleLines() throws Problem100.InvalidArgumentNumber, Problem100.InvalidArgumentTypes,
-            Problem100.InvalidArgumentRange, IOException {
+    public void sampleInputReturnsSampleOutput() throws IOException {
+        Problem100.parseInputStream(classLoader.getResourceAsStream(BASE_PATH + "sampleInput"));
 
-        String output = problem100.getOutput("1 10\n900 1000     ");
-
-        Assert.assertEquals("1 10 20\n900 1000 174", output);
-    }
-
-    @Test
-    public void sampleInputReturnsSampleOutput() throws Problem100.InvalidArgumentNumber, Problem100.InvalidArgumentTypes,
-            Problem100.InvalidArgumentRange, IOException {
-
-        String output = problem100.getOutput("1 10\n100 200\n201 210\n900 1000");
-
-        Assert.assertEquals("1 10 20\n100 200 125\n201 210 89\n900 1000 174", output);
+        Assert.assertEquals(IOUtils.toString(classLoader.getResourceAsStream(BASE_PATH + "sampleOutput"), "UTF-8"), output.toString());
     }
 }
