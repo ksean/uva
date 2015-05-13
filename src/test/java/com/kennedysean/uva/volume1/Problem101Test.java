@@ -1,5 +1,7 @@
 package com.kennedysean.uva.volume1;
 
+import com.kennedysean.uva.volume1.problem101.Problem101;
+import org.apache.commons.io.IOUtils;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -8,11 +10,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
 
-import org.apache.commons.io.IOUtils;
-
 public class Problem101Test {
 
-    private static final String BASE_PATH = "volume1/problem101/";
+    private static final String BASE_PATH = "com/kennedysean/uva/volume1/problem101/";
     ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
     ByteArrayOutputStream output = new ByteArrayOutputStream();;
 

@@ -1,4 +1,4 @@
-package com.kennedysean.uva.volume1;
+package com.kennedysean.uva.volume1.problem101;
 
 import com.google.common.base.Splitter;
 
