@@ -7,7 +7,7 @@
     <groupId>com.kennedysean.uva</groupId>
     <artifactId>problem-sets</artifactId>
     <packaging>jar</packaging>
-    <version>0.0.1</version>
+    <version>0.0.1-SNAPSHOT</version>
 
     <properties>
         <java.version>1.8</java.version>
