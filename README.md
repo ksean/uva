@@ -15,12 +15,12 @@ Solutions
 
 ### Volume 1
 
-1. [Problem 100](https://github.com/ksean/uva/blob/master/src/main/java/com/kennedysean/uva/volume1/Problem100.java)
-2. [Problem 101](https://github.com/ksean/uva/blob/master/src/main/java/com/kennedysean/uva/volume1/Problem101.java)
+1. [Problem 100](https://github.com/ksean/uva-problem-set/blob/master/src/main/java/com/kennedysean/uva/volume1/problem100/Problem100.java)
+2. [Problem 101](https://github.com/ksean/uva-problem-set/blob/master/src/main/java/com/kennedysean/uva/volume1/problem100/Problem101.java)
 
 
 Testing
 ------
 Testing integration with travis
 
-[Travis build history](https://travis-ci.org/ksean/uva)
+[Travis build history](https://travis-ci.org/ksean/uva-problem-set)
