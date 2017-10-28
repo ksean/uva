@@ -16,7 +16,7 @@ Solutions
 ### Volume 1
 
 1. [Problem 100](https://github.com/ksean/uva-problem-set/blob/master/src/main/java/com/kennedysean/uva/volume1/problem100/Problem100.java)
-2. [Problem 101](https://github.com/ksean/uva-problem-set/blob/master/src/main/java/com/kennedysean/uva/volume1/problem100/Problem101.java)
+2. [Problem 101](https://github.com/ksean/uva-problem-set/blob/master/src/main/java/com/kennedysean/uva/volume1/problem101/Problem101.java)
 
 
 Testing
